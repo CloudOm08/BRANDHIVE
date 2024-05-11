@@ -5,6 +5,8 @@
 3. Move app.py file, templates folder and static folder in the virtual environment created.
 
 **Problem Statement**
+
+
 The Project made by us is based on the Problem Statement :"Fintech Creator Economy". 
 The creator economy boomed due to exponential increase in the use of social networks and the quarantine lifestyle. They range from lifestyle vloggers to gaming livestreamers, from music to politics and from the kitchen to the Mumbai Police. A major challenge these influencers face is managing their finances. Depending on the work they do, they can earn money in numerous ways. Many resort to sponsorship deals and brand marketing. Other sources may include donations from loyal fans and merchandise sales.
 Another major issue influencers face is finding the right companies to collaborate with. Now this problem can go both ways, most companies are open to working with these people for publicising their products or services but it is just a matter of finding the right influencers.
