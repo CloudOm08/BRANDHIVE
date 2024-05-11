@@ -11,8 +11,8 @@ The Project made by us is based on the Problem Statement :"Fintech Creator Econo
 The creator economy boomed due to exponential increase in the use of social networks and the quarantine lifestyle. They range from lifestyle vloggers to gaming livestreamers, from music to politics and from the kitchen to the Mumbai Police. A major challenge these influencers face is managing their finances. Depending on the work they do, they can earn money in numerous ways. Many resort to sponsorship deals and brand marketing. Other sources may include donations from loyal fans and merchandise sales.
 Another major issue influencers face is finding the right companies to collaborate with. Now this problem can go both ways, most companies are open to working with these people for publicising their products or services but it is just a matter of finding the right influencers.
 Our web application Influencity is designed to solve  this problem. We have designed the app to have 2 interfaces: the user side and the organization side.
-The user side is designed to be used by all content creators, freelancers, curators and even the fans of the mentioned persons. 
-
+**The user side is designed to be used by all content creators, freelancers, curators and even the fans of the mentioned persons. 
+**
 They will be provided with the following features:
 
 Check insights: Users get a visual representation of analysis about their followers and subscribers.
@@ -29,7 +29,9 @@ Portfolio: Companies will be able to see all the details of the creator under th
 
 Updating profile: They can anytime change/ update their personal details and the images for merchandising
 
-Organizations here refer to anybody looking for influencers to endorse their products or to publicize their services and to collaborate for any projects and deals with them. They will have the following features:
+**Organizations here refer to anybody looking for influencers to endorse their products or to publicize their services and to collaborate for any projects and deals with them. 
+**
+They will have the following features:
 
 Invoices: Company can get a list of all their previous collaborations and all details of their deals with the said influencers.
 
