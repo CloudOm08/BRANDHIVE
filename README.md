@@ -1,45 +1,51 @@
-# devfest
-**Steps to Run the code:**
-1. Create a project folder in VScode.
-2. Open the folder and create virtual environment by running the command "python -m venv env" in the terminal.
-3. Move app.py file, templates folder and static folder in the virtual environment created.
+# DevFest
 
-**Problem Statement**
+## Overview
 
+DevFest is a web application designed to address the challenges faced by influencers in managing their finances and finding collaboration opportunities. It provides two interfaces: one for users (content creators, freelancers, and fans) and another for organizations (companies seeking influencers for endorsements and collaborations). The application leverages various features to facilitate financial management, collaboration, and communication between influencers and organizations.
 
-The Project made by us is based on the Problem Statement :"Fintech Creator Economy". 
-The creator economy boomed due to exponential increase in the use of social networks and the quarantine lifestyle. They range from lifestyle vloggers to gaming livestreamers, from music to politics and from the kitchen to the Mumbai Police. A major challenge these influencers face is managing their finances. Depending on the work they do, they can earn money in numerous ways. Many resort to sponsorship deals and brand marketing. Other sources may include donations from loyal fans and merchandise sales.
-Another major issue influencers face is finding the right companies to collaborate with. Now this problem can go both ways, most companies are open to working with these people for publicising their products or services but it is just a matter of finding the right influencers.
-Our web application Influencity is designed to solve  this problem. We have designed the app to have 2 interfaces: the user side and the organization side.
+## Installation
 
-**The user side is designed to be used by all content creators, freelancers, curators and even the fans of the mentioned persons.**
+To run DevFest locally, follow these steps:
 
-They will be provided with the following features:
+1. Clone the repository to your local machine:
 
-Check insights: Users get a visual representation of analysis about their followers and subscribers.
+2. Navigate to the project directory:
 
-Invoices: Users get the details of all the past payments and deals with the companies
+3. Create a virtual environment:
 
-Merchandise: Users can see the display products that are out for sell by other influencers/ curators/ freelancers. Also then viewers will be redirected to the Merchandiser's website if they wish to buy.
+4. Activate the virtual environment:
+- On Windows:
+  ```
+  .\env\Scripts\activate
+  ```
+- On macOS and Linux:
+  ```
+  source env/bin/activate
+  ```
 
-Payment: To support other creators whose content you like or to collaborate with some project with them, you can pay them. You can chat with the other creators only if you pay.
+5. Install the required dependencies
 
-Chat: Creators can chat with the companies who approach them for collaborations and can see messages from fans/followers who have supported by payment previously.
+6. Run the Flask application
 
-Portfolio: Companies will be able to see all the details of the creator under their portfolio.
+7. Access the application in your web browser at `http://localhost:5000`.
 
-Updating profile: They can anytime change/ update their personal details and the images for merchandising
+## Features
 
-**Organizations here refer to anybody looking for influencers to endorse their products or to publicize their services and to collaborate for any projects and deals with them.**
+### User Side Features:
 
-They will have the following features:
+- **Check Insights:** Visualize analysis insights about followers and subscribers.
+- **Invoices:** View details of past payments and deals with companies.
+- **Merchandise:** Browse and purchase products from other influencers, curators, and freelancers.
+- **Payment:** Support other creators or collaborate on projects by making payments.
+- **Chat:** Communicate with companies for collaborations and interact with fans/followers who have supported financially.
+- **Portfolio:** Showcase personal details and work under the portfolio section.
+- **Update Profile:** Modify personal details and images for merchandising purposes.
 
-Invoices: Company can get a list of all their previous collaborations and all details of their deals with the said influencers.
+### Organization Side Features:
 
-Products: This feature allows the company to check out merchandise released by the many influencers using their platform.
-
-Payment: It allows the company to make payments to the influencers they are working with.
-
-Chat: Companies can reach out and discuss their deals with creators through this.
-
-Update Profile: The company may at any time modify the information that they had entered at the time of signing in. This includes profile picture, name, email, website links, and links to their products.
+- **Invoices:** Access a list of previous collaborations and details of deals with influencers.
+- **Products:** Explore merchandise released by influencers on the platform.
+- **Payment:** Make payments to influencers for collaborations.
+- **Chat:** Initiate discussions and negotiate deals with creators through the chat feature.
+- **Update Profile:** Modify organization profile information, including profile picture, name, email, and website links.
