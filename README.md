@@ -1,18 +1,18 @@
-# DevFest
+# InfluenCity
 
 ## Overview
 
-DevFest is a web application designed to address the challenges faced by influencers in managing their finances and finding collaboration opportunities. It provides two interfaces: one for users (content creators, freelancers, and fans) and another for organizations (companies seeking influencers for endorsements and collaborations). The application leverages various features to facilitate financial management, collaboration, and communication between influencers and organizations.
+InfluenCity is a web application designed to address the challenges faced by influencers in managing their finances and finding collaboration opportunities. It provides two interfaces: one for users (content creators, freelancers, and fans) and another for organizations (companies seeking influencers for endorsements and collaborations). The application leverages various features to facilitate financial management, collaboration, and communication between influencers and organizations.
 
 ## Installation
 
-To run DevFest locally, follow these steps:
+To run InfluenCity locally, follow these steps:
 
-1. Clone the repository to your local machine:
+1. Clone the repository to your local machine.
 
-2. Navigate to the project directory:
+2. Navigate to the project directory.
 
-3. Create a virtual environment:
+3. Create a virtual environment.
 
 4. Activate the virtual environment:
 - On Windows:
@@ -24,9 +24,9 @@ To run DevFest locally, follow these steps:
   source env/bin/activate
   ```
 
-5. Install the required dependencies
+5. Install the required dependencies.
 
-6. Run the Flask application
+6. Run the Flask application.
 
 7. Access the application in your web browser at `http://localhost:5000`.
 
