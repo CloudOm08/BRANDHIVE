@@ -12,6 +12,8 @@ import matplotlib.pyplot as plt
 from datetime import date, datetime
 from bs4 import BeautifulSoup
 import requests
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 app = Flask(__name__)
 mysql = MySQL(app)
@@ -19,7 +21,7 @@ mysql = MySQL(app)
 app.secret_key = 'your secret key'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = 'Om@080106'
 app.config['MYSQL_DB'] = 'devfest'
 
 
@@ -158,64 +160,123 @@ def pay(name):
 
 @app.route('/insights')
 def insights():
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM iregister WHERE Name = %s', [session['Name']])
-    accounts = cursor.fetchone()
-    yt_link = accounts['youtube']
-    #link1=yt_link.split('/')[-1]
-    link1='UCvCyIiKSCA1fHKSCOKJyjXA'
-    domain = accounts['domain']
-    source = requests.get('https://www.noxinfluencer.com/youtube/realtime-subs-count/'+link1).text
-    soup = BeautifulSoup(source, 'lxml')
-    abc = soup.find('div', class_='page')
-    hd = abc.find('div', class_="page-container")
-    sd=hd.find('section', class_='sub-block')
-    fajb = sd.find('div', class_='sub-wrapper')
-    sub = fajb.find('span', id='sub-number')
-    subscribers=sub.text
+    try:
+        # Check if user is logged in
+        if 'loggedin' not in session:
+            return redirect(url_for('login'))
+        
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM iregister WHERE Name = %s', [session['Name']])
+        accounts = cursor.fetchone()
+        
+        if not accounts:
+            return redirect(url_for('login'))
+        
+        # Safely get values with defaults
+        yt_link = accounts.get('youtube', '')
+        domain = accounts.get('domain', '')
+        insta_id = accounts.get('insta_id', '')
+        
+        # Initialize default values
+        subscribers = "N/A"
+        insta_followers = "N/A"
+        engagement = "N/A"
+        plot_url = ""
+        
+        # Get YouTube subscribers if link exists
+        if yt_link:
+            subscribers = get_youtube_subscribers(yt_link)
+        
+        # Get Instagram stats if ID exists
+        if insta_id:
+            try:
+                source1 = requests.get(f'https://socialstats.info/report/{insta_id}/instagram', timeout=5)
+                source1.raise_for_status()
+                soup1 = BeautifulSoup(source1.text, 'lxml')
+                sy = soup1.find('div', class_="d-flex") 
+                if sy:
+                    count = sy.find_all('p', class_="report-header-number")
+                    values = [i.text for i in count]
+                    insta_followers = values[0] if values else "N/A"
+                    engagement = values[2].replace(" ", "") if len(values) > 2 else "N/A"
+            except Exception as e:
+                print(f"Error fetching Instagram stats: {e}")
+        
+        # Generate plot
+        try:
+            img = io.BytesIO()
+            list4 = [10000,11000,13000,20000,25000,36000,38000,43000,45000,40000,43000,46000]
+            score1 = ["Jan","Feb","Mar","April","May","Jun","July","Aug","Sept","Oct","Nov","Dec"]
+            plt.figure()
+            plt.plot(score1, list4)
+            plt.xlabel('Month')
+            plt.ylabel('FOLLOWERS')
+            plt.savefig(img, format='png')
+            img.seek(0)
+            plot_url = base64.b64encode(img.getvalue()).decode()
+            plt.close()
+        except Exception as e:
+            print(f"Error generating plot: {e}")
+        
+        data = {
+            'Task': 'Hours per Day', 
+            'Work': 11, 
+            'Eat': 2, 
+            'Commute': 2, 
+            'Watching TV': 2, 
+            'Sleeping': 7
+        }
+        
+        return render_template(
+            'insights.html',
+            plot_url=plot_url,
+            domain=domain,
+            data=data,
+            subscribers=subscribers,
+            followers=insta_followers,
+            engagement=engagement
+        )
+        
+    except Exception as e:
+        print(f"Unexpected error in insights route: {e}")
+        return redirect(url_for('ihome'))
     
-
-    insta_id = accounts['insta_id']
-    source1= requests.get('https://socialstats.info/report/'+insta_id+'/instagram').text
-    soup1 = BeautifulSoup(source1, 'lxml')
-    # abc1 = soup1.find('div', class_="container")
-    sy=soup1.find('div', class_="d-flex") 
-    count = sy.find_all('p', class_="report-header-number")
-    values=[]
-    for i in count:
-        values.append(i.text)
-    print(values)
-    followers=values[0]
-    post=values[1]
-    engagement=values[2].replace(" ","")
-    img = io.BytesIO()
-
-
-    list4 = [10000,11000,13000,20000,25000,36000,38000,43000,45000,40000,43000,46000]
-    score1 = ["Jan","Feb","Mar","April","May","Jun","July","Aug","Sept","Oct","Nov","Dec"]
-    plt.xlabel('Month')
-    plt.ylabel('FOLLOWERS')
-
-    fig = plt.plot(score1, list4)
-    
-    plt.savefig(img, format='png')
-    img.seek(0)
-    plot_url = base64.b64encode(img.getvalue()).decode()
-    img1 = io.BytesIO()
-
-
-    list41 = [10100,11010,13010,20010,25010,36001,38010,43100,45010,40010,43010,46001]
-    score11 = ["Jan","Feb","Mar","April","May","Jun","July","Aug","Sept","Oct","Nov","Dec"]
-    plt.xlabel('Month')
-    plt.ylabel('SUBSCRIBERS')
-
-    fig1 = plt.plot(score11, list41)
-    
-    plt.savefig(img, format='png')
-    img1.seek(0)
-    plot_url1 = base64.b64encode(img.getvalue()).decode()
-    data = {'Task' : 'Hours per Day', 'Work' : 11, 'Eat' : 2, 'Commute' : 2, 'Watching TV' : 2, 'Sleeping' : 7}
-    return render_template('insights.html', plot_url=plot_url, domain=domain,plot_url1=plot_url1, data=data, subscribers=subscribers, followers=followers, engagement=engagement)
+def get_youtube_subscribers(yt_link):
+    try:
+        API_KEY = "AIzaSyA2CLyQbb3ewPlfsGtWGRaw1rG2MiG_-kY"  # Consider moving this to config
+        youtube = build('youtube', 'v3', developerKey=API_KEY)
+        
+        # Extract channel ID from different URL formats
+        if 'channel/' in yt_link:
+            channel_id = yt_link.split('channel/')[-1].split('?')[0]
+            request = youtube.channels().list(
+                part='statistics',
+                id=channel_id
+            )
+        elif 'youtube.com/c/' in yt_link or 'youtube.com/user/' in yt_link:
+            username = yt_link.split('/')[-1]
+            request = youtube.channels().list(
+                part='statistics',
+                forUsername=username
+            )
+        else:
+            # Try with channel ID directly
+            request = youtube.channels().list(
+                part='statistics',
+                id=yt_link
+            )
+            
+        response = request.execute()
+        
+        if response.get('items'):
+            return int(response['items'][0]['statistics']['subscriberCount'])
+        return 0
+    except HttpError as e:
+        print(f"YouTube API Error: {e}")
+        return "N/A"
+    except Exception as e:
+        print(f"Error fetching YouTube subscribers: {e}")
+        return "N/A"
 
 @app.route('/c_home', methods=["GET", "POST"])
 def chome():
@@ -356,3 +417,4 @@ def cmerch():
 
 if __name__=="__main__":
     app.run(debug=True)
+

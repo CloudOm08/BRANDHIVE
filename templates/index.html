@@ -7,38 +7,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
+    <style>
+        body {
+            background-color: #f8f9fc; /* Light background for contrast */
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px; /* Limit width for better appearance */
+        }
+        h4 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: center;
+            color: #4e73df; /* Primary color */
+        }
+        input[type="email"],
+        input[type="text"],
+        input[type="number"],
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ced4da; /* Light border */
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #4e73df; /* Highlight border on focus */
+            outline: none;
+        }
+        button {
+            background-color: #4e73df; /* Primary button color */
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3e5bbf; /* Darker shade on hover */
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #6c757d; /* Secondary text color */
+        }
+    </style>
 </head>
-<body style="background-color: #4e73df;">
-    <form method="POST">
-        
-    </form>
+<body>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9 col-lg-12 col-xl-10">
-                <div class="card shadow-lg o-hidden border-0 my-5">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-flex">
-                                <div class="flex-grow-1 bg-login-image" style="background-image: url(&quot;548c3ca5d1b136462af2647c2e872de7.jpg&quot;);"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h4 class="text-dark mb-4">Payment</h4>
-                                    </div>
-                                    <form method="POST" class="user">
-                                       
-                                        <input placeholder="Email", name="email", type="email" required style="border-radius: 20px;width: 420px; height: 40px; text-align: center;" >
-                                        <br>
-                                        <br>
-                                        <input placeholder="Name", name="name", type="text" style="border-radius: 20px;width: 420px; height: 40px; text-align: center;" >
-                                        <br>
-                                        <br>
-                                        <input placeholder="Amount", name="amount", type="number" required style="border-radius: 20px;width: 420px; height: 40px; text-align: center;" >
-                                        <br>
-                                        <br>
-                                        <button style="border-radius: 20px;width: 420px; background-color: #4e73df;height: 40px; text-align: center;">Donate</button>
+        <h4>Payment</h4>
+        <form method="POST" class="user">
+            <input placeholder="Email" name="email" type="email" required>
+            <input placeholder="Name" name="name" type="text" required>
+            <input placeholder="Amount" name="amount" type="number" required>
+            <button type="submit">Donate</button>
+        </form>
+        <div class="footer">
+            <p>&copy; 2025 Your Company</p>
+        </div>
+    </div>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
 </body>
 </html>
