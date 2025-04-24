@@ -4,12 +4,93 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Register - Brand</title>
+    <title>Register - BrandHive</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="static/login_css1.css">
     <link rel="stylesheet" href="static/login_css2.css">
     <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .brand-logo i {
+            font-size: 2rem;
+            color: #4e73df;
+            margin-right: 10px;
+        }
+
+        .brand-logo span {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #4e73df;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            color: #6c757d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .bg-register-image {
+            background-image: url('../static/imgs/social-media-ai.jpg'); /* BrandHive image */
+            background-size: cover;
+            background-position: center;
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        .form-control-user {
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 0.95rem;
+            border: 1px solid #d1d3e2;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .form-control-user:focus {
+            border-color: #4e73df;
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+        }
+
+        input[type="radio"] {
+            transform: scale(1.1);
+            margin-right: 6px;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: #4e73df;
+            border-color: #4e73df;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #2e59d9;
+            border-color: #2653d4;
+        }
+
+        .text-center a {
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 
 <body class="bg-gradient-primary">
@@ -18,48 +99,65 @@
             <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
-                        <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;../static/imgs/social-media-ai.jpg&quot;);"></div>
+                        <div class="flex-grow-1 bg-register-image"></div>
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">
+                            <!-- BrandHive Logo & Tagline -->
+                            <div class="brand-logo">
+                                <i class="fas fa-bolt"></i>
+                                <span>BrandHive</span>
+                            </div>
+                            <div class="tagline">Buzzing with Influence – Connect, Collaborate, Create!</div>
+
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Create an Account!</h4>
                             </div>
-                            <form class="user" method="POST" enctype = "multipart/form-data">
 
-                              
-                                <div class="mb-3"><input class="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Name" name="name"></div>
-                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address" name="email"></div>
+                            <form class="user" method="POST" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <input class="form-control form-control-user" type="text" placeholder="Name" name="name">
+                                </div>
+                                <div class="mb-3">
+                                    <input class="form-control form-control-user" type="email" placeholder="Email Address" name="email">
+                                </div>
                                 <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Repeat Password" name="password_repeat"></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input class="form-control form-control-user" type="password" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="form-control form-control-user" type="password" placeholder="Repeat Password" name="password_repeat">
+                                    </div>
                                 </div>
-                                <div>
+
+                                <div class="mb-3">
                                     <p>Please select if you're an influencer or a company:</p>
-                                    <input type="radio" id="html" name="type" value="iregister">
-                                    <label for="html">Influencer</label>
-                                    <input type="radio" id="css" name="type" value="cregister">
-                                    <label for="css">Company</label><br><br>
-                                  
+                                    <input type="radio" id="influencer" name="type" value="iregister">
+                                    <label for="influencer">Influencer</label>
+                                    <input type="radio" id="company" name="type" value="cregister">
+                                    <label for="company">Company</label>
                                 </div>
-                                <label for="myfile">Upload your profile photo here:</label>
-                                <input type="file" id="myfile" name="file"><br><br>
+
+                            
+
                                 <input class="btn btn-primary d-block btn-user w-100" type="submit" value="Next">
-                               
                                 <hr>
                             </form>
-     
-                            <div class="text-center"><a class="small" href="/">Already have an account? Login!</a></div>
+
+                            <div class="text-center">
+                                <a class="small" href="/">Already have an account? Login!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="static/login_js1.js"></script>
     <script src="static/login_js2.js"></script>
     <script src="static/login_js3.js"></script>
-    <script id="bs-live-reload" data-sseport="56184" data-lastchange="1628938077302" src="static/login_js4.js"></script>
+    <script id="bs-live-reload" src="static/login_js4.js"></script>
 </body>
 
 </html>

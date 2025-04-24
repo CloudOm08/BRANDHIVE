@@ -12,6 +12,64 @@
     <link rel="stylesheet" href="/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"><style>
+        /* Better Card Design */
+        .card {
+            border: none;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+    
+        .card-body {
+            padding: 1.5rem;
+        }
+    
+        .card .text-xs {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+    
+        .card .h5 {
+            font-size: 1.5rem;
+        }
+    
+        /* Icons styling */
+        .card .col-auto i {
+            color: #4e73df;
+            background-color: rgba(78, 115, 223, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+        }
+    
+        /* Section Title */
+        .container-fluid > .d-sm-flex h3 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+    
+        /* Dashboard background */
+        body {
+            background-color: #f8f9fc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    
+        /* Chart area */
+        .card-body img, .card-body canvas {
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+    
+    <style>
+
+    </style>
+
     <!-- <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
@@ -40,9 +98,10 @@
 <body id="page-top">
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
-            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-                    <div class="sidebar-brand-text mx-3"><span>BRANDHIVE</span></div>
+                    <div class="sidebar-brand-text mx-3"><span>BrandHIve</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
@@ -54,7 +113,6 @@
                     <li class="nav-item"><a class="nav-link" href="/ichats"><i class="fas fa-user-circle"></i><span>Chats</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/iprofile"><i class="fas fa-user"></i><span>Profile</span></a></li>
                 </ul>
-                <!-- <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div> -->
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -99,7 +157,7 @@
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Instagram Followers</span></div>
                                             <div class="text-dark fw-bold h5 mb-0"><span>{{ followers }}</span></div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto"><i class="fab fa-instagram fa-2x text-danger"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +170,7 @@
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Youtube Subscribers</span></div>
                                             <div class="text-dark fw-bold h5 mb-0"><span>{{ subscribers }}</span></div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto"><i class="fab fa-youtube fa-2x text-danger"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +188,7 @@
                                                 
                                             </div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto"><i class="fas fa-chart-line fa-2x text-info"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -143,19 +201,13 @@
                                             <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Domain</span></div>
                                             <div class="text-dark fw-bold h5 mb-0"><span>{{ domain }}</span></div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto"><i class="fas fa-globe fa-2x text-warning"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body"><img style="width: 550px;" src="data:image/png;base64, {{ plot_url }}">
-                        <img style="width: 550px; margin-left: 50px;" src="data:image/png;base64, {{ plot_url1 }}">
-
-                        <!--                                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plotly.com/~chris/1638.embed" height="525" width="100%"></iframe>-->
-                                                            <canvas data-bss-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}]}}}"></canvas>
-                        
-                        </div>
+                   
                         
                    
     </div>

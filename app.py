@@ -87,7 +87,7 @@ def reg():
         email= request.form["email"]
         password= request.form["password"]
         type = request.form["type"]
-        file = request.files['file']
+        file = request.files.get('file')
         if type == "iregister":
             return redirect(url_for('register1', name=name, email=email, password=password, file=file))
         elif type == "cregister":
